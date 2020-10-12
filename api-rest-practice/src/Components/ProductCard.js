@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -16,9 +17,11 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    marginBottom: '2em'
   },
   media: {
     height: 0,
@@ -39,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProductCard({ title, price, description, category, image}) {
+export default function ProductCard({ id , title, price, description, category, image}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -73,9 +76,9 @@ export default function ProductCard({ title, price, description, category, image
         <Typography variant="body2" color="textSecondary" component="p">{description}</Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <Link to ={`/products/${id}`}><IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
+        </IconButton></Link>
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
